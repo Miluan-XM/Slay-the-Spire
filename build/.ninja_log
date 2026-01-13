@@ -1,0 +1,5 @@
+# ninja log v6
+17	151	7899863299948733	CMakeFiles/MY_SlayTheSpire.dir/src/game.c.obj	898650db0a1f897d
+16	240	7899871134499583	CMakeFiles/MY_SlayTheSpire.dir/src/DataLoader.c.obj	4d5a8e3e8ce29d6d
+9	1100	7899871134431006	CMakeFiles/MY_SlayTheSpire.dir/main.c.obj	a57ca8240c847e42
+1100	1376	7899871145347483	MY_SlayTheSpire.exe	131eadf474da806c

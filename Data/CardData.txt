@@ -1,0 +1,2 @@
+1,打击,ATTACK,1,EnemyAttack
+2,格挡,DEFEND,1,PlayerDefend

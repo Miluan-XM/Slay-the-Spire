@@ -1,0 +1,3 @@
+D:/test/My-program/Slay the Spire/build/CMakeFiles/MY_SlayTheSpire.dir
+D:/test/My-program/Slay the Spire/build/CMakeFiles/edit_cache.dir
+D:/test/My-program/Slay the Spire/build/CMakeFiles/rebuild_cache.dir
