@@ -76,6 +76,15 @@ build CMakeFiles/MY_SlayTheSpire.dir/src/DataLoader.c.obj: C_COMPILER__MY_SlayTh
   OBJECT_FILE_DIR = CMakeFiles\MY_SlayTheSpire.dir\src
   TARGET_SUPPORT_DIR = CMakeFiles\MY_SlayTheSpire.dir
 
+build CMakeFiles/MY_SlayTheSpire.dir/src/Debug.c.obj: C_COMPILER__MY_SlayTheSpire_unscanned_Debug D$:/test/My-program/Slay$ the$ Spire/src/Debug.c || cmake_object_order_depends_target_MY_SlayTheSpire
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles\MY_SlayTheSpire.dir\src\Debug.c.obj.d
+  FLAGS = -g -std=gnu99 -Wall -Wextra
+  INCLUDES = -I"D:/test/My-program/Slay the Spire/include"
+  OBJECT_DIR = CMakeFiles\MY_SlayTheSpire.dir
+  OBJECT_FILE_DIR = CMakeFiles\MY_SlayTheSpire.dir\src
+  TARGET_SUPPORT_DIR = CMakeFiles\MY_SlayTheSpire.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target MY_SlayTheSpire
@@ -84,7 +93,7 @@ build CMakeFiles/MY_SlayTheSpire.dir/src/DataLoader.c.obj: C_COMPILER__MY_SlayTh
 #############################################
 # Link the executable MY_SlayTheSpire.exe
 
-build MY_SlayTheSpire.exe: C_EXECUTABLE_LINKER__MY_SlayTheSpire_Debug CMakeFiles/MY_SlayTheSpire.dir/main.c.obj CMakeFiles/MY_SlayTheSpire.dir/src/game.c.obj CMakeFiles/MY_SlayTheSpire.dir/src/DataLoader.c.obj
+build MY_SlayTheSpire.exe: C_EXECUTABLE_LINKER__MY_SlayTheSpire_Debug CMakeFiles/MY_SlayTheSpire.dir/main.c.obj CMakeFiles/MY_SlayTheSpire.dir/src/game.c.obj CMakeFiles/MY_SlayTheSpire.dir/src/DataLoader.c.obj CMakeFiles/MY_SlayTheSpire.dir/src/Debug.c.obj
   CONFIG = Debug
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32

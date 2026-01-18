@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 int file_line_count(char * filename);
-CardState * Data_load_init_card();
+CardDataArray * Data_load_init_card();
 EnemyState * Data_load_init_enemy();
 void File_OpenError_Reporter();
 void   Memory_error_print();
@@ -16,6 +16,8 @@ int file_line_count(char * filename){
         File_OpenError_Reporter();
         return 0;
     }
+        char midStr[512];
+    fgets(midStr, sizeof(midStr), file);
     char ch='\0';
     int count=0;
     int line_was_new_line=0;
@@ -36,10 +38,11 @@ int file_line_count(char * filename){
     return count;
 }
 //卡牌初始化
-CardState * Data_load_init_card(){
+CardDataArray * Data_load_init_card(){
     int num=file_line_count(CARDDATA);
+    CardDataArray *Data_Array=(CardDataArray*)malloc(sizeof(CardDataArray));
     CardState *Array_Card=(CardState*)calloc(num,sizeof(CardState));
-    if(Array_Card==NULL){
+    if(Array_Card==NULL||Data_Array==NULL){
         Memory_error_print();
         return NULL;
     }
@@ -48,10 +51,10 @@ CardState * Data_load_init_card(){
         File_OpenError_Reporter();
         return 0;
     }
-    char midStr[256];
+    char midStr[512];
     int now_rate=0;
+    fgets(midStr, sizeof(midStr), file);
     while(fgets(midStr, sizeof(midStr), file) != NULL){
-            fgets(midStr,sizeof(midStr),file);
             midStr[strcspn(midStr,"\r\n")]=0;
             char *token=strtok(midStr,",");
             int field=0;
@@ -70,19 +73,22 @@ CardState * Data_load_init_card(){
                     case 3:
                     Array_Card[now_rate].CardCost=atoi(token);
                     break;
-                    case 4:
-                    Array_Card[now_rate].effect=atoi(token);
-                    break;
                     default:
-                    printf("enough\n");
+                    Array_Card[now_rate].effect[field - 4] = atoi(token);
                 }
                 token=strtok(NULL,",");
                 field++;
             }
             now_rate++;
     }
-    printf("Have loaded %d cards\n",now_rate+1);
-    return Array_Card;
+    printf("Have loaded %d cards\n",now_rate);
+    fclose(file);
+    Data_Array->len=num;
+    Data_Array->CardDataArray=Array_Card;
+    if(Data_Array->CardDataArray==NULL){
+        printf("array give error\n");
+    }
+    return Data_Array;
 }
 
 //内存分配报错

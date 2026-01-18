@@ -1,5 +1,24 @@
 # ninja log v6
-17	151	7899863299948733	CMakeFiles/MY_SlayTheSpire.dir/src/game.c.obj	898650db0a1f897d
-16	240	7899871134499583	CMakeFiles/MY_SlayTheSpire.dir/src/DataLoader.c.obj	4d5a8e3e8ce29d6d
-9	1100	7899871134431006	CMakeFiles/MY_SlayTheSpire.dir/main.c.obj	a57ca8240c847e42
-1100	1376	7899871145347483	MY_SlayTheSpire.exe	131eadf474da806c
+154	425	7900034652656603	MY_SlayTheSpire.exe	131eadf474da806c
+6	690	7904510072448098	CMakeFiles/MY_SlayTheSpire.dir/main.c.obj	a57ca8240c847e42
+27	1341	7904507471620659	CMakeFiles/MY_SlayTheSpire.dir/src/DataLoader.c.obj	4d5a8e3e8ce29d6d
+22	1342	7904507471564640	CMakeFiles/MY_SlayTheSpire.dir/src/game.c.obj	898650db0a1f897d
+3	138	7904512806977976	build.ninja	4fceb5c50004b9f2
+10	94	7904510072498023	CMakeFiles/MY_SlayTheSpire.dir/src/Debug.c.obj	5971f6c8803ba1f7
+3	138	7904512806895824	D:/test/My-program/Slay the Spire/build/cmake_install.cmake	4fceb5c50004b9f2
+6	761	7904514004773772	CMakeFiles/MY_SlayTheSpire.dir/main.c.obj	a57ca8240c847e42
+12	113	7904515047134232	CMakeFiles/MY_SlayTheSpire.dir/src/Debug.c.obj	5971f6c8803ba1f7
+6	728	7904515047063329	CMakeFiles/MY_SlayTheSpire.dir/main.c.obj	a57ca8240c847e42
+728	956	7904515054285280	MY_SlayTheSpire.exe	aff96c145f3287ec
+12	119	7904522555369197	CMakeFiles/MY_SlayTheSpire.dir/src/game.c.obj	898650db0a1f897d
+24	130	7904522555493180	CMakeFiles/MY_SlayTheSpire.dir/src/Debug.c.obj	5971f6c8803ba1f7
+5	743	7904522555315172	CMakeFiles/MY_SlayTheSpire.dir/main.c.obj	a57ca8240c847e42
+5	108	7904522779087066	CMakeFiles/MY_SlayTheSpire.dir/src/DataLoader.c.obj	4d5a8e3e8ce29d6d
+109	332	7904522780127292	MY_SlayTheSpire.exe	aff96c145f3287ec
+9	152	7904523697770543	CMakeFiles/MY_SlayTheSpire.dir/src/Debug.c.obj	5971f6c8803ba1f7
+153	489	7904523699207065	MY_SlayTheSpire.exe	aff96c145f3287ec
+17	281	7904525983375905	CMakeFiles/MY_SlayTheSpire.dir/src/Debug.c.obj	5971f6c8803ba1f7
+9	1222	7904525983292614	CMakeFiles/MY_SlayTheSpire.dir/main.c.obj	a57ca8240c847e42
+1223	1575	7904525995433524	MY_SlayTheSpire.exe	aff96c145f3287ec
+9	216	7904527016245638	CMakeFiles/MY_SlayTheSpire.dir/src/Debug.c.obj	5971f6c8803ba1f7
+217	637	7904527018327420	MY_SlayTheSpire.exe	aff96c145f3287ec

@@ -3,7 +3,7 @@
 
 #include "game.h"
 
-CardState *Data_load_init_card();
+CardDataArray *Data_load_init_card();
 void Memory_error_print();
 void File_OpenError_Reporter();
 int file_line_count(char * filename);

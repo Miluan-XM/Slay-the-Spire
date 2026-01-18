@@ -16,5 +16,11 @@
   "command": "C:\\msys64\\mingw64\\bin\\gcc.exe -I\"D:/test/My-program/Slay the Spire/include\" -g -std=gnu99 -Wall -Wextra -o CMakeFiles\\MY_SlayTheSpire.dir\\src\\DataLoader.c.obj -c \"D:\\test\\My-program\\Slay the Spire\\src\\DataLoader.c\"",
   "file": "D:/test/My-program/Slay the Spire/src/DataLoader.c",
   "output": "D:/test/My-program/Slay the Spire/build/CMakeFiles/MY_SlayTheSpire.dir/src/DataLoader.c.obj"
+},
+{
+  "directory": "D:/test/My-program/Slay the Spire/build",
+  "command": "C:\\msys64\\mingw64\\bin\\gcc.exe -I\"D:/test/My-program/Slay the Spire/include\" -g -std=gnu99 -Wall -Wextra -o CMakeFiles\\MY_SlayTheSpire.dir\\src\\Debug.c.obj -c \"D:\\test\\My-program\\Slay the Spire\\src\\Debug.c\"",
+  "file": "D:/test/My-program/Slay the Spire/src/Debug.c",
+  "output": "D:/test/My-program/Slay the Spire/build/CMakeFiles/MY_SlayTheSpire.dir/src/Debug.c.obj"
 }
 ]

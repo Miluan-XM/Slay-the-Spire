@@ -13,7 +13,7 @@ set(SOURCES
 main.c
 src/game.c
 src/DataLoader.c
-
+src/Debug.c
             )
 
 

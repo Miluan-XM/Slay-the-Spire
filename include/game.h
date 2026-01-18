@@ -1,4 +1,5 @@
 #ifndef __GAME_H__
+
 #define __GAME_H__
 
 
@@ -8,6 +9,8 @@
 #define Defect_MAX_Health  75 
 #define Watcher_MAX_Health  72
 
+//cardeffecct max
+#define EFFECT_MAX 5
 
 //文件名字
 #define CARDDATA "Data/CardData.txt"
@@ -70,7 +73,7 @@ typedef struct{
 
 //卡牌类型枚举
 typedef enum{
-    ATTACK=0,
+    ATTACK=1,
     SKILL,
     ABILITY,
     CURSE,
@@ -80,8 +83,11 @@ typedef enum{
 
 //卡牌效果枚举
 typedef enum{
-    EnemyAttack,
-    PlayerDefend,
+    Effect_ATTACK=1,
+    Effect_Defend,
+    Effect_Buff_self,
+    Effect_Buff_enemy,
+    Effect_Card_Draw,
 }CardEffect;
 
 //卡牌结构体
@@ -90,12 +96,18 @@ typedef struct {
     char name[100];
     CardType cardtype;
     int CardCost;
-    CardEffect effect;
+    CardEffect effect[5];
 }CardState;
+
+//卡牌结构体
+typedef struct {
+    CardState *CardDataArray;
+    int len;
+}CardDataArray;
+
 
 void game_init_player(PlayerState *player);
 void game_init_enemy(EnemyState *enemy);
-
 
 
 
