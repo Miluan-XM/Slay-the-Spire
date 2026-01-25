@@ -74,7 +74,11 @@ CardDataArray * Data_load_init_card(){
                     Array_Card[now_rate].CardCost=atoi(token);
                     break;
                     default:
-                    Array_Card[now_rate].effect[field - 4] = atoi(token);
+                    if(field<=8){
+                    Array_Card[now_rate].effect_array[field-4].effect=atoi(token);
+                    }else{
+                        Array_Card[now_rate].effect_array[field-9].value=atoi(token);
+                    }
                 }
                 token=strtok(NULL,",");
                 field++;

@@ -24,9 +24,17 @@ int main (){
     if(MC==NULL){
         Memory_error_print();
     }
-    CardDataArray *CardData_array=Data_load_init_card();
+    CardDataArray *Card_Library=Data_load_init_card();
     game_init_player(MC);
+
+
     printf("Herotype:%d\n 当前血量：%d\n 最大血量：%d\n 当前格挡值%d\n费用:%d/%d\n",MC->hero,MC->health,MC->max_health,MC->defend,MC->CurrCost,MC->MaxCoat);
-    print_CardLoaded_array(CardData_array->CardDataArray,CardData_array->len);
+
+
+
+    
+    print_CardLoaded_array(Card_Library->CardDataArray,Card_Library->len);
+
+
     return 0;
 }

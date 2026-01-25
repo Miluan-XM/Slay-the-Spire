@@ -30,7 +30,10 @@ void print_CardLoaded_array(CardState *card,int len){
                 card[i].CardCost);
         //effect print
         for(j=0;j<EFFECT_MAX;j++){
-            printf("%-20s",print_enum_to_string_CardEffect(card[i].effect[j]));
+            printf("%-20s",print_enum_to_string_CardEffect(card[i].effect_array[j].effect));
+        }
+        for(j=0;j<EFFECT_MAX;j++){
+            printf("%-3d",card[i].effect_array[j].value);
         }
         printf("\n");
     }
