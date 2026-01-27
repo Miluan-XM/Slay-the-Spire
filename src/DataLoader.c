@@ -4,8 +4,9 @@
 #include <stdlib.h>
 
 int file_line_count(char * filename);
-CardDataArray * Data_load_init_card();
-EnemyState * Data_load_init_enemy();
+CardLibrary * Data_load_init_card();
+EnemyLibrary * Data_load_init_enemy();
+MoveLibrary* Data_load_init_move();
 void File_OpenError_Reporter();
 void   Memory_error_print();
 
@@ -38,9 +39,9 @@ int file_line_count(char * filename){
     return count;
 }
 //卡牌初始化
-CardDataArray * Data_load_init_card(){
+CardLibrary * Data_load_init_card(){
     int num=file_line_count(CARDDATA);
-    CardDataArray *Data_Array=(CardDataArray*)malloc(sizeof(CardDataArray));
+    CardLibrary *Data_Array=(CardLibrary*)malloc(sizeof(CardLibrary));
     CardState *Array_Card=(CardState*)calloc(num,sizeof(CardState));
     if(Array_Card==NULL||Data_Array==NULL){
         Memory_error_print();
@@ -107,4 +108,112 @@ void File_OpenError_Reporter(){
 
 
 //
-EnemyState *Data_load_init_enemy();
+EnemyLibrary *Data_load_init_enemy(){
+    FILE *file=fopen(ENEMYDATA,"r");
+    if(file==NULL){
+        File_OpenError_Reporter();
+    }
+    int num=file_line_count(ENEMYDATA);
+    EnemyData * enemyData=(EnemyData*)calloc(num,sizeof(EnemyData));
+    EnemyLibrary * enemylibrary=(EnemyLibrary*)malloc(sizeof(EnemyLibrary));
+    if(enemyData==NULL||enemylibrary==NULL){
+        Memory_error_print();
+        return NULL;
+    }
+    char mid[512];
+    fgets(mid,512,file);
+    int now_rate=0;
+    while(fgets(mid,512,file)){
+
+        char *token=strtok(mid,",");
+        int field=0;
+        while(token!=NULL){
+            switch (field)
+            {
+            case 0:
+            enemyData[now_rate].id=atoi(token);
+            break;
+            case 1:
+            strcpy(enemyData[now_rate].name,token);
+            break;
+            case 2:
+            enemyData[now_rate].Max_health=atoi(token);
+            break;
+            default:    
+                    //进入招式以及数值写入
+                //三个招式数值的写入
+                if(field>9){
+                sscanf(token,"{%d:%d:%d}",
+                    &enemyData[now_rate].move[field-10][1],
+                    &enemyData[now_rate].move[field-10][2],
+                    &enemyData[now_rate].move[field-10][3]
+                );
+                 }else{
+                    enemyData[now_rate].move[field-3][0]=atoi(token);//field==9,结束
+                }
+                break;
+            }
+
+                    token=strtok(NULL,",");         
+                    field++;
+        }
+
+        now_rate++;
+    }
+    printf("Have loaded %d enemys\n",now_rate);
+
+    enemylibrary->enemystate=enemyData;
+    enemylibrary->len=num;
+    if(enemylibrary->enemystate==NULL){
+            printf("array give error\n");
+    }
+    fclose(file);
+    return enemylibrary;
+}
+
+
+MoveLibrary* Data_load_init_move(){
+    FILE *file=fopen(MOVEDATA,"r");
+    if(file==NULL){
+        File_OpenError_Reporter();
+    }
+    int num=file_line_count(MOVEDATA);
+    MoveLibrary *movelibrary=(MoveLibrary*)malloc(sizeof(MoveLibrary));
+    MoveFact *movedata=(MoveFact*)calloc(num,sizeof(MoveFact));
+    if(movelibrary==NULL||movedata==NULL){
+        Memory_error_print();
+        return NULL;
+    }
+    char mid[1024];
+    int now_rate=0;
+    fgets(mid,sizeof(mid),file);
+    while( fgets(mid,sizeof(mid),file)!=NULL){
+        char * token=strtok(mid,",");
+        int field=0;
+        while(token!=NULL){
+            switch (field)
+            {
+            case 0:
+            movedata[now_rate].id=atoi(token);
+            break;
+            case 1:
+            strcpy(movedata[now_rate].name,token);
+            break;
+            default:
+            movedata[now_rate].intention[field-2]=atoi(token);
+            break;
+            }
+            field++;
+            token=strtok(NULL,",");
+        }
+        now_rate++;
+
+    }
+    fclose(file);
+    movelibrary->movedata=movedata;
+    if(movelibrary->movedata==NULL){
+            printf("array give error\n");
+    }
+    movelibrary->len=num;
+    return movelibrary;
+}

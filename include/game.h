@@ -12,10 +12,11 @@
 //cardeffecct max
 #define EFFECT_MAX 5
 #define EFFECT_ENUM_NUM 1000
-#define STAUS_MAX_COUNT 200
+#define STAUS_MAX_COUNT 900
 //文件名字
 #define CARDDATA "Data/CardData.txt"
 #define ENEMYDATA "Data/EnemyData.txt"
+#define MOVEDATA "Data/MoveData.txt"
 //职业枚举
 typedef enum {
     Ironclad=1,
@@ -75,39 +76,77 @@ typedef struct {
 typedef enum {
     Buff_None=0,//无BUFF
     //通用
-    //正面1-100
+    //正面1-300
     Buff_STRENGTH=1,//力量
     Buff_DEXTERITY,//敏捷
     Buff_THORNS,//荆棘
-    //负面100-199
-    DeBuff_VALNERABALE=101,//易伤
+
+    //负面301-600
+    DeBuff_VALNERABALE=301,//易伤
     DeBuff_WEAK,//虚弱
     Debuff_FRAIL,//脆弱
+    //怪物专属601-900
+    EnemyBuff_RITUAL=601,
 }BuffEnum;
 //怪物
 
 //怪物的意图枚举
 typedef enum {
-    intent_Attack=0,            //攻击
+    intent_Attack=1,            //攻击
     intent_Defend,              //防御
-    intent_GiveSelfBuff,        //强化自身
-    intent_GivePlayerBuff,      //给予负面
-}IntnentType;
+    intent_CardGive,            //塞牌
+    intent_selfBuff001=1001,
 
+
+
+    intent_selfDeBuff101=1301,
+
+
+    intent_selfEnemyBuff=1601,
+
+
+    intent_giveBuff001=2001,
+
+
+    intent_giveDeBuff101=2301,
+
+
+    intent_giveEnemyBuff=2601,
+
+}IntnentType;
+//意图结构体
+typedef struct {
+    int id;
+    char name[50];
+    IntnentType intention[3];//一个动作可以是多个意图组合
+}MoveFact;
+
+//动作目录
+typedef struct{
+    MoveFact *movedata;
+    int len;
+}MoveLibrary;
 
 //怪物数据
 typedef struct{
     int id;
     char name[100];
     int Max_health;
+    int move[7][4];//一个怪物最多七个意图的id,一个招式最多3个数值
 }EnemyData;
+//数据储存
+typedef struct{
+    EnemyData *enemystate; 
+    int len;
+}EnemyLibrary;
+
+
 
 //怪物状态
 typedef struct{
+    EnemyData enemydata;
     int health;
-    int max_health;
     int defend;
-    IntnentType intention;
     int EnemyBuff[STAUS_MAX_COUNT];
 }EnemyState;
 
@@ -134,11 +173,11 @@ typedef enum{
 
     Effect_playerBuff001=1001,
 
-    Effect_playerDeBuff101=1101,
+    Effect_playerDeBuff101=1301,
 
     Effect_enemyBuff001=2001,
 
-    Effect_enemyDeBuff101=2101,
+    Effect_enemyDeBuff101=2301,
 }CardEffect;
 //效果结构体
 typedef struct {
@@ -160,7 +199,7 @@ typedef struct {
 typedef struct {
     CardState *CardDataArray;
     int len;
-}CardDataArray;
+}CardLibrary;
 
 void game_init_player(PlayerState *player);
 void InitCard_Ironclad(PlayerState *player);

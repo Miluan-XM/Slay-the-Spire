@@ -3,12 +3,13 @@
 
 #include "game.h"
 
-CardDataArray *Data_load_init_card();
-void Memory_error_print();
-void File_OpenError_Reporter();
+
+
 int file_line_count(char * filename);
-EnemyState *Data_load_init_enemy();
-
-
+CardLibrary * Data_load_init_card();
+EnemyLibrary * Data_load_init_enemy();
+MoveLibrary* Data_load_init_move();
+void File_OpenError_Reporter();
+void   Memory_error_print();
 
 #endif
