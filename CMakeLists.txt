@@ -14,6 +14,8 @@ main.c
 src/game.c
 src/DataLoader.c
 src/Debug.c
+src/battle.c
+src/Effect.c
             )
 
 

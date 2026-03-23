@@ -11,12 +11,18 @@
 
 //cardeffecct max
 #define EFFECT_MAX 5
-#define EFFECT_ENUM_NUM 1000
+#define SELF_BUFF_ENUM 1000
+#define TO_BUFF_ENUM 2000
 #define STAUS_MAX_COUNT 900
 //文件名字
 #define CARDDATA "Data/CardData.txt"
 #define ENEMYDATA "Data/EnemyData.txt"
 #define MOVEDATA "Data/MoveData.txt"
+/**怪物的特殊招式的位次 */
+#define SPECIAL_MOVE_RATE 0
+
+
+
 //职业枚举
 typedef enum {
     Ironclad=1,
@@ -27,6 +33,11 @@ typedef enum {
 
 //玩家
 
+
+typedef struct {
+    int master[100];
+    int master_count;
+}Master_Card;
 
 
 typedef struct {
@@ -63,6 +74,7 @@ typedef struct {
     int PlayerBuff[STAUS_MAX_COUNT];// buff结构体数组，当前数值为层数
     //关于卡牌
     BattleContext battle_context;
+    Master_Card master_card;
     //
     int gold;
 }PlayerState;
@@ -74,19 +86,41 @@ typedef struct {
 
 
 typedef enum {
-    Buff_None=0,//无BUFF
-    //通用
-    //正面1-300
-    Buff_STRENGTH=1,//力量
-    Buff_DEXTERITY,//敏捷
-    Buff_THORNS,//荆棘
+    /** 无状态 */
+    Buff_None = 0,
 
-    //负面301-600
-    DeBuff_VALNERABALE=301,//易伤
-    DeBuff_WEAK,//虚弱
-    Debuff_FRAIL,//脆弱
-    //怪物专属601-900
-    EnemyBuff_RITUAL=601,
+    /* --- 通用正面状态 (1-300) --- */
+
+    /** 力量：每层增加攻击伤害值 */
+    Buff_STRENGTH = 1,
+
+    /** 敏捷：每层增加格挡时获得的护甲值 */
+    Buff_DEXTERITY,
+
+    /** 荆棘：受到攻击时，对攻击者反弹等同于层数的伤害 */
+    Buff_THORNS,
+
+    /** 壁垒：回合开始时，格挡值不再自动清零 */
+    Buff_BARRIER,
+
+
+    /* --- 通用负面状态 (301-600) --- */
+
+    /** 易伤：受到的攻击伤害增加 25% (或按公式计算) */
+    DeBuff_VALNERABALE = 301,
+
+    /** 虚弱：造成的攻击伤害减少 25% */
+    DeBuff_WEAK,
+
+    /** 脆弱：通过卡牌获得的格挡值减少 25% */
+    Debuff_FRAIL,
+
+
+    /* --- 怪物专属状态 (601-900) --- */
+
+    /** 仪式：每回合结束时，获得等同于层数的力量 */
+    EnemyBuff_RITUAL = 601,
+
 }BuffEnum;
 //怪物
 
@@ -95,6 +129,8 @@ typedef enum {
     intent_Attack=1,            //攻击
     intent_Defend,              //防御
     intent_CardGive,            //塞牌
+    /**意图：召唤 */
+    intent_Dummon,
     intent_selfBuff001=1001,
 
 
@@ -126,14 +162,28 @@ typedef struct{
     MoveFact *movedata;
     int len;
 }MoveLibrary;
-
+//怪物ai
+typedef enum {
+    /**先强化后攻击型 */
+    AI_INTENSIFY_ATTACK=1,
+    /**一直随机攻击型 */
+    AI_RANDOM_ATTACK=2,
+    /**回合触发型 */
+    AI_ROUND_TRIGGER=3,
+    /**生命触发型 */
+    AI_BLOOD=4,
+}AI_MODE;
 //怪物数据
 typedef struct{
     int id;
     char name[100];
     int Max_health;
+    AI_MODE mode;
+    int critical;
     int move[7][4];//一个怪物最多七个意图的id,一个招式最多3个数值
 }EnemyData;
+
+
 //数据储存
 typedef struct{
     EnemyData *enemystate; 
@@ -142,12 +192,15 @@ typedef struct{
 
 
 
-//怪物状态
+//z战斗中怪物状态
 typedef struct{
     EnemyData enemydata;
+    int max_health;
     int health;
     int defend;
+    MoveFact curr_move;
     int EnemyBuff[STAUS_MAX_COUNT];
+    int turn_count;
 }EnemyState;
 
 
@@ -202,14 +255,25 @@ typedef struct {
 }CardLibrary;
 
 void game_init_player(PlayerState *player);
-void InitCard_Ironclad(PlayerState *player);
+void Init_Card_Ironclad(PlayerState *player);
 void game_init_enemy(EnemyState *enemy);
+//查阅函数
+CardState  Card_Searcher(int id,CardLibrary *lib);
+MoveFact  Move_Searcher(int id,MoveLibrary *lib);
+EnemyData Enemy_Searcher(int id,EnemyLibrary *lib);
 
 
+void Card_Shuffier(int card[],int len);
+int RandNum_between(int a,int b);
 
 
+void swap_value(int *a,int *b);
+const char* UI_Get_Buff_Name(int index);
+
+void Print_Player_Status(PlayerState *p) ;
 
 
+void Print_Enemy_Status(EnemyState *e) ;
 
 
 

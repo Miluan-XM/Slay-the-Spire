@@ -76,7 +76,7 @@ void debug_print_enemy_library(EnemyLibrary *lib) {
     
     for (int i = 0; i < lib->len; i++) {
         EnemyData *e = &lib->enemystate[i];
-        printf("ID: %-3d | Name: %-12s | MaxHP: %-3d\n", e->id, e->name, e->Max_health);
+        printf("ID: %-3d | Name: %-12s | MaxHP: %-3d| AI_Mode %-3d\n", e->id, e->name, e->Max_health,e->mode);
         printf("Moves Config:\n");
         
         // 打印该怪物的 7 个招式位

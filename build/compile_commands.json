@@ -22,5 +22,17 @@
   "command": "C:\\msys64\\mingw64\\bin\\gcc.exe -I\"D:/test/My-program/Slay the Spire/include\" -g -std=gnu99 -Wall -Wextra -o CMakeFiles\\MY_SlayTheSpire.dir\\src\\Debug.c.obj -c \"D:\\test\\My-program\\Slay the Spire\\src\\Debug.c\"",
   "file": "D:/test/My-program/Slay the Spire/src/Debug.c",
   "output": "D:/test/My-program/Slay the Spire/build/CMakeFiles/MY_SlayTheSpire.dir/src/Debug.c.obj"
+},
+{
+  "directory": "D:/test/My-program/Slay the Spire/build",
+  "command": "C:\\msys64\\mingw64\\bin\\gcc.exe -I\"D:/test/My-program/Slay the Spire/include\" -g -std=gnu99 -Wall -Wextra -o CMakeFiles\\MY_SlayTheSpire.dir\\src\\battle.c.obj -c \"D:\\test\\My-program\\Slay the Spire\\src\\battle.c\"",
+  "file": "D:/test/My-program/Slay the Spire/src/battle.c",
+  "output": "D:/test/My-program/Slay the Spire/build/CMakeFiles/MY_SlayTheSpire.dir/src/battle.c.obj"
+},
+{
+  "directory": "D:/test/My-program/Slay the Spire/build",
+  "command": "C:\\msys64\\mingw64\\bin\\gcc.exe -I\"D:/test/My-program/Slay the Spire/include\" -g -std=gnu99 -Wall -Wextra -o CMakeFiles\\MY_SlayTheSpire.dir\\src\\Effect.c.obj -c \"D:\\test\\My-program\\Slay the Spire\\src\\Effect.c\"",
+  "file": "D:/test/My-program/Slay the Spire/src/Effect.c",
+  "output": "D:/test/My-program/Slay the Spire/build/CMakeFiles/MY_SlayTheSpire.dir/src/Effect.c.obj"
 }
 ]

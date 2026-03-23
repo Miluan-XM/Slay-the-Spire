@@ -139,17 +139,21 @@ EnemyLibrary *Data_load_init_enemy(){
             case 2:
             enemyData[now_rate].Max_health=atoi(token);
             break;
+            case 3:
+            enemyData[now_rate].mode=atoi(token);
+            case 4:
+            sscanf(token,"Criticla:%d",enemyData[now_rate].critical);
             default:    
                     //进入招式以及数值写入
                 //三个招式数值的写入
-                if(field>9){
+                if(field>11){
                 sscanf(token,"{%d:%d:%d}",
-                    &enemyData[now_rate].move[field-10][1],
-                    &enemyData[now_rate].move[field-10][2],
-                    &enemyData[now_rate].move[field-10][3]
+                    &enemyData[now_rate].move[field-12][1],
+                    &enemyData[now_rate].move[field-12][2],
+                    &enemyData[now_rate].move[field-12][3]
                 );
                  }else{
-                    enemyData[now_rate].move[field-3][0]=atoi(token);//field==9,结束
+                    enemyData[now_rate].move[field-5][0]=atoi(token);//field==11,结束
                 }
                 break;
             }
