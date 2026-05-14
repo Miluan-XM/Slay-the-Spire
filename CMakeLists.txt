@@ -1,23 +1,21 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(MY_SlayTheSpire VERSION 0.01 LANGUAGES C)
+project(MY_SlayTheSpire VERSION 0.01 LANGUAGES CXX)
 
-set (CMAKE_C_STANDARD 99)
-set (CMAKE_C_STANDARD_REQUIRED ON)
-
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include_directories(include)
 
-
 set(SOURCES 
-main.c
-src/game.c
-src/DataLoader.c
-src/Debug.c
-src/battle.c
-src/Effect.c
-            )
-
+    main.cpp
+    src/Game.cpp
+    src/DataLoader.cpp
+    src/Debug.cpp
+    src/Battle.cpp
+    src/Effect.cpp
+    src/Map.cpp
+)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 
@@ -30,9 +28,7 @@ add_custom_command(
 )
 
 if(MSVC)
-    # 如果使用 Visual Studio 编译器
     target_compile_options(${PROJECT_NAME} PRIVATE /W4)
 else()
-    # 如果使用 GCC 或 MinGW
     target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra)
 endif()
