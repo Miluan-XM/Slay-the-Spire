@@ -76,99 +76,99 @@ CMakeFiles/MY_SlayTheSpire.dir/main.cpp.o: CMakeFiles/MY_SlayTheSpire.dir/flags.
 CMakeFiles/MY_SlayTheSpire.dir/main.cpp.o: /home/xiami/test/My-program/Slay\ the\ spire/Slay-the-Spire/main.cpp
 CMakeFiles/MY_SlayTheSpire.dir/main.cpp.o: CMakeFiles/MY_SlayTheSpire.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/MY_SlayTheSpire.dir/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MY_SlayTheSpire.dir/main.cpp.o -MF CMakeFiles/MY_SlayTheSpire.dir/main.cpp.o.d -o CMakeFiles/MY_SlayTheSpire.dir/main.cpp.o -c "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/main.cpp"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MY_SlayTheSpire.dir/main.cpp.o -MF CMakeFiles/MY_SlayTheSpire.dir/main.cpp.o.d -o CMakeFiles/MY_SlayTheSpire.dir/main.cpp.o -c "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/main.cpp"
 
 CMakeFiles/MY_SlayTheSpire.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MY_SlayTheSpire.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/main.cpp" > CMakeFiles/MY_SlayTheSpire.dir/main.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/main.cpp" > CMakeFiles/MY_SlayTheSpire.dir/main.cpp.i
 
 CMakeFiles/MY_SlayTheSpire.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MY_SlayTheSpire.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/main.cpp" -o CMakeFiles/MY_SlayTheSpire.dir/main.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/main.cpp" -o CMakeFiles/MY_SlayTheSpire.dir/main.cpp.s
 
 CMakeFiles/MY_SlayTheSpire.dir/src/Game.cpp.o: CMakeFiles/MY_SlayTheSpire.dir/flags.make
 CMakeFiles/MY_SlayTheSpire.dir/src/Game.cpp.o: /home/xiami/test/My-program/Slay\ the\ spire/Slay-the-Spire/src/Game.cpp
 CMakeFiles/MY_SlayTheSpire.dir/src/Game.cpp.o: CMakeFiles/MY_SlayTheSpire.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/MY_SlayTheSpire.dir/src/Game.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MY_SlayTheSpire.dir/src/Game.cpp.o -MF CMakeFiles/MY_SlayTheSpire.dir/src/Game.cpp.o.d -o CMakeFiles/MY_SlayTheSpire.dir/src/Game.cpp.o -c "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/Game.cpp"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MY_SlayTheSpire.dir/src/Game.cpp.o -MF CMakeFiles/MY_SlayTheSpire.dir/src/Game.cpp.o.d -o CMakeFiles/MY_SlayTheSpire.dir/src/Game.cpp.o -c "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/Game.cpp"
 
 CMakeFiles/MY_SlayTheSpire.dir/src/Game.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MY_SlayTheSpire.dir/src/Game.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/Game.cpp" > CMakeFiles/MY_SlayTheSpire.dir/src/Game.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/Game.cpp" > CMakeFiles/MY_SlayTheSpire.dir/src/Game.cpp.i
 
 CMakeFiles/MY_SlayTheSpire.dir/src/Game.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MY_SlayTheSpire.dir/src/Game.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/Game.cpp" -o CMakeFiles/MY_SlayTheSpire.dir/src/Game.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/Game.cpp" -o CMakeFiles/MY_SlayTheSpire.dir/src/Game.cpp.s
 
 CMakeFiles/MY_SlayTheSpire.dir/src/DataLoader.cpp.o: CMakeFiles/MY_SlayTheSpire.dir/flags.make
 CMakeFiles/MY_SlayTheSpire.dir/src/DataLoader.cpp.o: /home/xiami/test/My-program/Slay\ the\ spire/Slay-the-Spire/src/DataLoader.cpp
 CMakeFiles/MY_SlayTheSpire.dir/src/DataLoader.cpp.o: CMakeFiles/MY_SlayTheSpire.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/MY_SlayTheSpire.dir/src/DataLoader.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MY_SlayTheSpire.dir/src/DataLoader.cpp.o -MF CMakeFiles/MY_SlayTheSpire.dir/src/DataLoader.cpp.o.d -o CMakeFiles/MY_SlayTheSpire.dir/src/DataLoader.cpp.o -c "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/DataLoader.cpp"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MY_SlayTheSpire.dir/src/DataLoader.cpp.o -MF CMakeFiles/MY_SlayTheSpire.dir/src/DataLoader.cpp.o.d -o CMakeFiles/MY_SlayTheSpire.dir/src/DataLoader.cpp.o -c "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/DataLoader.cpp"
 
 CMakeFiles/MY_SlayTheSpire.dir/src/DataLoader.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MY_SlayTheSpire.dir/src/DataLoader.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/DataLoader.cpp" > CMakeFiles/MY_SlayTheSpire.dir/src/DataLoader.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/DataLoader.cpp" > CMakeFiles/MY_SlayTheSpire.dir/src/DataLoader.cpp.i
 
 CMakeFiles/MY_SlayTheSpire.dir/src/DataLoader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MY_SlayTheSpire.dir/src/DataLoader.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/DataLoader.cpp" -o CMakeFiles/MY_SlayTheSpire.dir/src/DataLoader.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/DataLoader.cpp" -o CMakeFiles/MY_SlayTheSpire.dir/src/DataLoader.cpp.s
 
 CMakeFiles/MY_SlayTheSpire.dir/src/Debug.cpp.o: CMakeFiles/MY_SlayTheSpire.dir/flags.make
 CMakeFiles/MY_SlayTheSpire.dir/src/Debug.cpp.o: /home/xiami/test/My-program/Slay\ the\ spire/Slay-the-Spire/src/Debug.cpp
 CMakeFiles/MY_SlayTheSpire.dir/src/Debug.cpp.o: CMakeFiles/MY_SlayTheSpire.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/MY_SlayTheSpire.dir/src/Debug.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MY_SlayTheSpire.dir/src/Debug.cpp.o -MF CMakeFiles/MY_SlayTheSpire.dir/src/Debug.cpp.o.d -o CMakeFiles/MY_SlayTheSpire.dir/src/Debug.cpp.o -c "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/Debug.cpp"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MY_SlayTheSpire.dir/src/Debug.cpp.o -MF CMakeFiles/MY_SlayTheSpire.dir/src/Debug.cpp.o.d -o CMakeFiles/MY_SlayTheSpire.dir/src/Debug.cpp.o -c "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/Debug.cpp"
 
 CMakeFiles/MY_SlayTheSpire.dir/src/Debug.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MY_SlayTheSpire.dir/src/Debug.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/Debug.cpp" > CMakeFiles/MY_SlayTheSpire.dir/src/Debug.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/Debug.cpp" > CMakeFiles/MY_SlayTheSpire.dir/src/Debug.cpp.i
 
 CMakeFiles/MY_SlayTheSpire.dir/src/Debug.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MY_SlayTheSpire.dir/src/Debug.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/Debug.cpp" -o CMakeFiles/MY_SlayTheSpire.dir/src/Debug.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/Debug.cpp" -o CMakeFiles/MY_SlayTheSpire.dir/src/Debug.cpp.s
 
 CMakeFiles/MY_SlayTheSpire.dir/src/Battle.cpp.o: CMakeFiles/MY_SlayTheSpire.dir/flags.make
 CMakeFiles/MY_SlayTheSpire.dir/src/Battle.cpp.o: /home/xiami/test/My-program/Slay\ the\ spire/Slay-the-Spire/src/Battle.cpp
 CMakeFiles/MY_SlayTheSpire.dir/src/Battle.cpp.o: CMakeFiles/MY_SlayTheSpire.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/MY_SlayTheSpire.dir/src/Battle.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MY_SlayTheSpire.dir/src/Battle.cpp.o -MF CMakeFiles/MY_SlayTheSpire.dir/src/Battle.cpp.o.d -o CMakeFiles/MY_SlayTheSpire.dir/src/Battle.cpp.o -c "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/Battle.cpp"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MY_SlayTheSpire.dir/src/Battle.cpp.o -MF CMakeFiles/MY_SlayTheSpire.dir/src/Battle.cpp.o.d -o CMakeFiles/MY_SlayTheSpire.dir/src/Battle.cpp.o -c "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/Battle.cpp"
 
 CMakeFiles/MY_SlayTheSpire.dir/src/Battle.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MY_SlayTheSpire.dir/src/Battle.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/Battle.cpp" > CMakeFiles/MY_SlayTheSpire.dir/src/Battle.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/Battle.cpp" > CMakeFiles/MY_SlayTheSpire.dir/src/Battle.cpp.i
 
 CMakeFiles/MY_SlayTheSpire.dir/src/Battle.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MY_SlayTheSpire.dir/src/Battle.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/Battle.cpp" -o CMakeFiles/MY_SlayTheSpire.dir/src/Battle.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/Battle.cpp" -o CMakeFiles/MY_SlayTheSpire.dir/src/Battle.cpp.s
 
 CMakeFiles/MY_SlayTheSpire.dir/src/Effect.cpp.o: CMakeFiles/MY_SlayTheSpire.dir/flags.make
 CMakeFiles/MY_SlayTheSpire.dir/src/Effect.cpp.o: /home/xiami/test/My-program/Slay\ the\ spire/Slay-the-Spire/src/Effect.cpp
 CMakeFiles/MY_SlayTheSpire.dir/src/Effect.cpp.o: CMakeFiles/MY_SlayTheSpire.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/MY_SlayTheSpire.dir/src/Effect.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MY_SlayTheSpire.dir/src/Effect.cpp.o -MF CMakeFiles/MY_SlayTheSpire.dir/src/Effect.cpp.o.d -o CMakeFiles/MY_SlayTheSpire.dir/src/Effect.cpp.o -c "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/Effect.cpp"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MY_SlayTheSpire.dir/src/Effect.cpp.o -MF CMakeFiles/MY_SlayTheSpire.dir/src/Effect.cpp.o.d -o CMakeFiles/MY_SlayTheSpire.dir/src/Effect.cpp.o -c "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/Effect.cpp"
 
 CMakeFiles/MY_SlayTheSpire.dir/src/Effect.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MY_SlayTheSpire.dir/src/Effect.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/Effect.cpp" > CMakeFiles/MY_SlayTheSpire.dir/src/Effect.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/Effect.cpp" > CMakeFiles/MY_SlayTheSpire.dir/src/Effect.cpp.i
 
 CMakeFiles/MY_SlayTheSpire.dir/src/Effect.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MY_SlayTheSpire.dir/src/Effect.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/Effect.cpp" -o CMakeFiles/MY_SlayTheSpire.dir/src/Effect.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/Effect.cpp" -o CMakeFiles/MY_SlayTheSpire.dir/src/Effect.cpp.s
 
 CMakeFiles/MY_SlayTheSpire.dir/src/Map.cpp.o: CMakeFiles/MY_SlayTheSpire.dir/flags.make
 CMakeFiles/MY_SlayTheSpire.dir/src/Map.cpp.o: /home/xiami/test/My-program/Slay\ the\ spire/Slay-the-Spire/src/Map.cpp
 CMakeFiles/MY_SlayTheSpire.dir/src/Map.cpp.o: CMakeFiles/MY_SlayTheSpire.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/MY_SlayTheSpire.dir/src/Map.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MY_SlayTheSpire.dir/src/Map.cpp.o -MF CMakeFiles/MY_SlayTheSpire.dir/src/Map.cpp.o.d -o CMakeFiles/MY_SlayTheSpire.dir/src/Map.cpp.o -c "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/Map.cpp"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MY_SlayTheSpire.dir/src/Map.cpp.o -MF CMakeFiles/MY_SlayTheSpire.dir/src/Map.cpp.o.d -o CMakeFiles/MY_SlayTheSpire.dir/src/Map.cpp.o -c "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/Map.cpp"
 
 CMakeFiles/MY_SlayTheSpire.dir/src/Map.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MY_SlayTheSpire.dir/src/Map.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/Map.cpp" > CMakeFiles/MY_SlayTheSpire.dir/src/Map.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/Map.cpp" > CMakeFiles/MY_SlayTheSpire.dir/src/Map.cpp.i
 
 CMakeFiles/MY_SlayTheSpire.dir/src/Map.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MY_SlayTheSpire.dir/src/Map.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/Map.cpp" -o CMakeFiles/MY_SlayTheSpire.dir/src/Map.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/Map.cpp" -o CMakeFiles/MY_SlayTheSpire.dir/src/Map.cpp.s
 
 # Object files for target MY_SlayTheSpire
 MY_SlayTheSpire_OBJECTS = \

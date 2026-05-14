@@ -7,7 +7,7 @@
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-9ad1a58d4644cf6543fa.json",
+					"jsonFile" : "directory-.-Debug-9ad1a58d4644cf6543fa.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.10"
@@ -20,7 +20,7 @@
 					]
 				}
 			],
-			"name" : "",
+			"name" : "Debug",
 			"projects" : 
 			[
 				{
@@ -40,7 +40,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "MY_SlayTheSpire::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-MY_SlayTheSpire-1591e26dd294250fdd1b.json",
+					"jsonFile" : "target-MY_SlayTheSpire-Debug-a4a85e6044cb80945eb2.json",
 					"name" : "MY_SlayTheSpire",
 					"projectIndex" : 0
 				}

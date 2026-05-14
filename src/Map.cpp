@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/**
+ * @brief 将指定ID的卡牌加入玩家牌组末尾，并打印卡牌名字
+ */
 void add_card_to_deck(PlayerState *player, int card_id, CardLibrary *lib){
     player->master_card.master[player->master_card.master_count]=card_id;
     player->master_card.master_count++;
@@ -9,6 +12,12 @@ void add_card_to_deck(PlayerState *player, int card_id, CardLibrary *lib){
     printf("获得新卡: %s\n",cs.name);
 }
 
+/**
+ * @brief 根据层数随机选择敌人ID：第1层1~2号，第2层1~3号，第3层全部
+ * @param floor 当前层数
+ * @param lib 敌人库指针（用于获取最大ID）
+ * @return 敌人ID（从1开始）
+ */
 int pick_random_enemy_id(int floor, EnemyLibrary *lib){
     int max_id=lib->len;
     int min_id=1;
@@ -18,6 +27,12 @@ int pick_random_enemy_id(int floor, EnemyLibrary *lib){
     return id;
 }
 
+/**
+ * @brief 为当前层生成3个随机事件节点（战斗50%/宝箱15%/神秘15%/篝火20%）
+ * @param run 运行状态指针（输出，path被填充）
+ * @param floor 当前层数
+ * @param enemy_lib 敌人库指针（用于战斗事件随机选敌）
+ */
 void generate_floor_nodes(RunState *run, int floor, EnemyLibrary *enemy_lib){
     run->floor=floor;
     run->step=0;
@@ -48,11 +63,17 @@ void generate_floor_nodes(RunState *run, int floor, EnemyLibrary *enemy_lib){
     }
 }
 
+/**
+ * @brief 生成Boss事件（当前未使用，Boss直接在main中处理）
+ */
 EventType generate_boss_event(EnemyLibrary *enemy_lib, int &enemy_id){
     enemy_id=enemy_lib->len;
     return EVENT_BOSS;
 }
 
+/**
+ * @brief 显示当前步的两个可选事件（主选项+备选），备选随机生成
+ */
 void show_node_choices(RunState *run, EnemyLibrary *enemy_lib){
     MapNode &a=run->path[run->step];
     MapNode b;
@@ -84,6 +105,10 @@ void show_node_choices(RunState *run, EnemyLibrary *enemy_lib){
     printf("请选择 (1 或 2): ");
 }
 
+/**
+ * @brief 等待玩家输入1或2，过滤非法字符
+ * @return 1 或 2
+ */
 int choose_option(){
     int c;
     while(1){
@@ -97,12 +122,18 @@ int choose_option(){
     }
 }
 
+/**
+ * @brief 宝箱事件：获得金币 + 卡牌三选一奖励
+ */
 void handle_treasure(PlayerState *player, CardLibrary *lib, int gold_amt){
     player->gold+=gold_amt;
     printf("获得%d金币！当前金币: %d\n",gold_amt,player->gold);
     battle_reward(player,lib);
 }
 
+/**
+ * @brief 未知事件：随机触发以下之一——回血(30%)/金币(25%)/受伤(20%)/得卡(15%)/无事(10%)
+ */
 void handle_mystery(PlayerState *player, CardLibrary *lib){
     int r=RandNum_between(1,100);
     if(r<=30){
@@ -127,6 +158,10 @@ void handle_mystery(PlayerState *player, CardLibrary *lib){
     }
 }
 
+/**
+ * @brief 篝火事件：按最大生命值的百分比恢复
+ * @param pct 恢复百分比（如30=恢复30%）
+ */
 void handle_rest(PlayerState *player, int pct){
     int heal=player->max_health*pct/100;
     player->health+=heal;

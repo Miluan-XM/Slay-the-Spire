@@ -107,7 +107,9 @@ int *NumBreak(int num, int rate);
 void Num_For_MultiAttack(int *a, int *b, int value);
 
 /**
- * @brief 打印卡牌效果描述
+ * @brief 打印卡牌效果描述（如 "攻击 6 + 防御 5"）
+ * @param card 卡牌数据引用
+ * @note 遍历 effect_array[0..4]，根据 effect 类型拼中文描述，多段攻击解析 value>10000 编码
  */
 void describe_card(CardState &card);
 

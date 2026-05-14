@@ -34,5 +34,11 @@
   "command": "/usr/bin/g++  -I\"/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/include\" -g -std=gnu++17 -Wall -Wextra -o CMakeFiles/MY_SlayTheSpire.dir/src/Effect.cpp.o -c \"/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/Effect.cpp\"",
   "file": "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/Effect.cpp",
   "output": "CMakeFiles/MY_SlayTheSpire.dir/src/Effect.cpp.o"
+},
+{
+  "directory": "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/build",
+  "command": "/usr/bin/g++  -I\"/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/include\" -g -std=gnu++17 -Wall -Wextra -o CMakeFiles/MY_SlayTheSpire.dir/src/Map.cpp.o -c \"/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/Map.cpp\"",
+  "file": "/home/xiami/test/My-program/Slay the spire/Slay-the-Spire/src/Map.cpp",
+  "output": "CMakeFiles/MY_SlayTheSpire.dir/src/Map.cpp.o"
 }
 ]

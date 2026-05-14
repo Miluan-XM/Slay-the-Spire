@@ -3,14 +3,11 @@
 #include <string.h>
 #include <stdlib.h>
 
-int file_line_count(char * filename);
-CardLibrary * Data_load_init_card();
-EnemyLibrary * Data_load_init_enemy();
-MoveLibrary* Data_load_init_move();
-void File_OpenError_Reporter();
-void   Memory_error_print();
-
-//行数统计
+/**
+ * @brief 统计文件数据行数：跳过首行表头，逐字符读文件统计'\n'数量
+ * @param filename 文件路径
+ * @return 数据行数，失败返回0
+ */
 int file_line_count(char * filename){
     FILE *file=fopen(filename,"r");
     if(file==NULL){
@@ -38,7 +35,13 @@ int file_line_count(char * filename){
     fclose(file);
     return count;
 }
-//卡牌初始化
+
+/**
+ * @brief 从 CardData.txt 加载卡牌数据
+ * @details CSV格式：id,name,CardType,CardCost,effect[0-4],value[0-4]
+ *          字段4-8为效果类型枚举，字段9-13为效果数值
+ * @return CardLibrary* 卡牌库指针，文件打开失败返回nullptr
+ */
 CardLibrary * Data_load_init_card(){
     int num=file_line_count(CARDDATA);
     CardLibrary *Data_Array = new CardLibrary();
@@ -89,18 +92,27 @@ CardLibrary * Data_load_init_card(){
     return Data_Array;
 }
 
-//内存分配报错
+/**
+ * @brief 打印内存分配错误信息
+ */
 void Memory_error_print()
 {
     printf("Memory Error");
 }
 
+/**
+ * @brief 打印文件打开错误信息（使用perror）
+ */
 void File_OpenError_Reporter(){
     perror("FILE OPEN WRONG");
 }
 
-
-//
+/**
+ * @brief 从 EnemyData.txt 加载敌人蓝图数据
+ * @details CSV格式：id,name,max_health,ai_mode,Critical:value,moveID[0-6],{v1:v2:v3}[0-6]
+ *          字段5-11为招式ID，字段12-为招式数值（用{}包裹的3个值）
+ * @return EnemyLibrary* 敌人库指针
+ */
 EnemyLibrary *Data_load_init_enemy(){
     FILE *file=fopen(ENEMYDATA,"r");
     if(file==NULL){
@@ -136,8 +148,6 @@ EnemyLibrary *Data_load_init_enemy(){
             sscanf(token,"Critical:%d",&enemylibrary->enemystate[now_rate].critical);
             break;
             default:    
-                    //进入招式以及数值写入
-                //三个招式数值的写入
                 if(field>11){
                 sscanf(token,"{%d:%d:%d}",
                     &enemylibrary->enemystate[now_rate].move[field-12][1],
@@ -163,7 +173,12 @@ EnemyLibrary *Data_load_init_enemy(){
     return enemylibrary;
 }
 
-
+/**
+ * @brief 从 MoveData.txt 加载招式数据
+ * @details CSV格式：id,name,intention[0],intention[1],intention[2]
+ *          招式ID从501开始，意图枚举为IntnentType
+ * @return MoveLibrary* 招式库指针
+ */
 MoveLibrary* Data_load_init_move(){
     FILE *file=fopen(MOVEDATA,"r");
     if(file==NULL){

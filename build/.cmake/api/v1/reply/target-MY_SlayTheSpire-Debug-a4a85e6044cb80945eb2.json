@@ -61,7 +61,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-std=gnu++17"
+					"fragment" : "-g -std=gnu++17"
 				},
 				{
 					"backtrace" : 3,
@@ -103,6 +103,13 @@
 	"id" : "MY_SlayTheSpire::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-g",
+				"role" : "flags"
+			}
+		],
 		"language" : "CXX"
 	},
 	"name" : "MY_SlayTheSpire",

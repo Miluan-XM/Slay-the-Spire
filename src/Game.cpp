@@ -4,13 +4,9 @@
 #include <stdlib.h>
 #include "Game.hpp"
 
-CardState Card_Searcher(int id,CardLibrary *lib);
-MoveFact Move_Searcher(int id,MoveLibrary *lib);
-EnemyData Enemy_Searcher(int id,EnemyLibrary *lib);
-void Card_Shuffier(int card[],int len);
-int RandNum_between(int a,int b);
-void swap_value(int *a,int *b);
-
+/**
+ * @brief 玩家初始化：选择职业、设置血量、初始化基础Buff向量和战斗上下文
+ */
 void game_init_player(PlayerState *player){
     player->battle_context = BattleContext();
     player->master_card = Master_Card();
@@ -50,6 +46,9 @@ void game_init_player(PlayerState *player){
     player->CurrCost=3;
 }
 
+/**
+ * @brief 为铁甲战士填充初始牌组：5张打击(1)、4张防御(2)、1张痛击(3)，并设置起始金币90
+ */
 void Init_Card_Ironclad(PlayerState *player){
     int i = 0;
     player->master_card.master.assign(100, 0);
@@ -66,6 +65,9 @@ void Init_Card_Ironclad(PlayerState *player){
     player->gold = 90;
 }
 
+/**
+ * @brief 按ID从卡牌库查询卡牌（ID从1开始），越界时打印错误并返回默认值
+ */
 CardState Card_Searcher(int id,CardLibrary *lib){
     if (id < 1 || id > (int)lib->CardDataArray.size()) {
         printf("Error: Card id %d out of range (size: %zu)\n", id, lib->CardDataArray.size());
@@ -73,6 +75,10 @@ CardState Card_Searcher(int id,CardLibrary *lib){
     }
     return lib->CardDataArray[id-1];
 }
+
+/**
+ * @brief 按ID从招式库查询招式（ID从501开始），越界时打印错误并返回默认值
+ */
 MoveFact Move_Searcher(int id,MoveLibrary *lib){
     if (id < 501 || id > 501 + (int)lib->movedata.size()) {
         printf("Error: Move id %d out of range\n", id);
@@ -80,6 +86,10 @@ MoveFact Move_Searcher(int id,MoveLibrary *lib){
     }
     return lib->movedata[id-501];
 }
+
+/**
+ * @brief 按ID从敌人库查询敌人蓝图（ID从1开始），越界时打印错误并返回默认值
+ */
 EnemyData Enemy_Searcher(int id,EnemyLibrary *lib){
     if (id < 1 || id > (int)lib->enemystate.size()) {
         printf("Error: Enemy id %d out of range (size: %zu)\n", id, lib->enemystate.size());
@@ -88,6 +98,9 @@ EnemyData Enemy_Searcher(int id,EnemyLibrary *lib){
     return lib->enemystate[id-1];
 }
 
+/**
+ * @brief 生成 [a, b] 闭区间随机整数，自动处理 a>b 的情况
+ */
 int RandNum_between(int a,int b){
     int max=b;
     int min=a;
@@ -95,6 +108,9 @@ int RandNum_between(int a,int b){
     return rand()%(max-min+1)+min;
 }
 
+/**
+ * @brief Fisher-Yates 洗牌，从数组末尾向前遍历，每次与随机位置的元素交换
+ */
 void Card_Shuffier(int card[],int len){
     printf("\n");
     for(int i=len-1;i>-1;i--){
@@ -104,6 +120,10 @@ void Card_Shuffier(int card[],int len){
     printf("Shuffier finished\n");
 }
 
+/**
+ * @brief 将 Buff 枚举值映射为 UI 显示的简写名称
+ * @note STR=力量, DEX=敏捷, THN=荆棘, BAR=壁垒, VUL=易伤, WEK=虚弱, FRL=脆弱, RIT=仪式
+ */
 const char* UI_Get_Buff_Name(int index) {
     switch(index) {
         case Buff_STRENGTH:   return "STR";
@@ -118,6 +138,9 @@ const char* UI_Get_Buff_Name(int index) {
     }
 }
 
+/**
+ * @brief 打印玩家状态面板：HP图形条、格挡值、能量、Buff列表
+ */
 void Print_Player_Status(PlayerState *p) {
     printf("\n======================= PLAYER =======================\n");
     int bar_width = 20;
@@ -141,6 +164,9 @@ void Print_Player_Status(PlayerState *p) {
     printf("\n------------------------------------------------------\n");
 }
 
+/**
+ * @brief 打印敌人状态面板：名字、意图、HP图形条、格挡值、Buff列表
+ */
 void Print_Enemy_Status(EnemyState *e) {
     printf("\n----------------------- ENEMY -----------------------\n");
     printf("[%s] 意图: %s\n",e->enemydata.name,e->curr_move.name);

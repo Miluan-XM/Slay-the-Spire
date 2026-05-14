@@ -4,25 +4,18 @@
 #include <stdlib.h>
 #include "Battle.hpp"
 
-
-void battle_init_player(PlayerState *player);
-
-EnemyState battle_init_enemy(int enemy_id,EnemyLibrary *lib);
-
-void Turn_Player(PlayerState * mc,CardLibrary *lib);
-
-void Turn_Enemy(EnemyState *enemy,PlayerState *mc);
-
-int Card_Drawer(PlayerState *mc, int i,CardLibrary *lib);
-
-void Card_FindAndPrinter(int id,CardLibrary *lib);
-void Turn_Buff_Changer(std::vector<int>& buff);
-
+/**
+ * @brief 交换两个整数的值（辅助函数）
+ */
 void swap_value(int *a,int *b){
     int temp=*b;
     *b=*a;
     *a=temp;
 }
+
+/**
+ * @brief 战斗初始化：重置BattleContext，将master_card复制到draw_pile，洗牌
+ */
 void battle_init_player(PlayerState *player){
     player->battle_context = BattleContext();
     
@@ -40,9 +33,11 @@ void battle_init_player(PlayerState *player){
         perror("Copy Error");
     }
     Card_Shuffier(player->battle_context.draw_pile.data(),player->battle_context.draw_pile_count);
-
 }
 
+/**
+ * @brief 按敌人ID创建战斗实例，读取蓝图数据并初始化血量/Buff/回合计数器
+ */
 EnemyState battle_init_enemy(int enemy_id,EnemyLibrary *lib){
     EnemyState enemy;
     enemy = EnemyState();
@@ -53,17 +48,16 @@ EnemyState battle_init_enemy(int enemy_id,EnemyLibrary *lib){
     return enemy;
 }
 
-//玩家回合
+/**
+ * @brief 玩家回合：重置能量→壁垒判断→减Buff→弃手牌→抽5张→展示手牌
+ */
 void Turn_Player(PlayerState * mc,CardLibrary *lib){
     
     mc->CurrCost = mc->MaxCoat;
-    //格挡清零，壁垒判断
     if(mc->PlayerBuff[Buff_BARRIER]==0){
         mc->defend=0;
     }
-    //需要减少的buff们，要专门的函数
     Turn_Buff_Changer(mc->PlayerBuff);
-    //丢弃手牌
     for(int i=0;i<mc->battle_context.hand_count;i++){
         if(mc->battle_context.hand[i]!=0){
             mc->battle_context.discard_pile[mc->battle_context.discard_pile_count++]=mc->battle_context.hand[i];
@@ -71,24 +65,23 @@ void Turn_Player(PlayerState * mc,CardLibrary *lib){
     }
     mc->battle_context.hand.assign(10,0);
     mc->battle_context.hand_count=0;
-    //抽牌，抽五张
     int i=0;
-    //每次抽牌到十张为止
     for(i=0;i<5;i++){
         if ( Card_Drawer(mc, i,lib)==0){
               break;
         }
     }
-    //手牌展示
     for(i=0;i<mc->battle_context.hand_count;i++){
         printf("%d",i);
         Card_FindAndPrinter(mc->battle_context.hand[i],lib);
     }
-    
-
 }
 
-
+/**
+ * @brief 抽牌：从draw_pile栈顶取牌放入hand[i]
+ * @note draw_pile为空时自动将discard_pile shuffle接入
+ * @return 1=成功，0=手牌满(10张)
+ */
 int Card_Drawer(PlayerState *mc, int i,CardLibrary *lib){
 
     if (mc->battle_context.hand_count == 10){
@@ -112,11 +105,19 @@ int Card_Drawer(PlayerState *mc, int i,CardLibrary *lib){
     mc->battle_context.draw_pile_count--;
     return 1;
 }
+
+/**
+ * @brief 查询并打印卡牌名字
+ */
 void Card_FindAndPrinter(int id,CardLibrary *lib){
     CardState curr_card=Card_Searcher(id,lib);
     printf(" %s\n",curr_card.name);
 }
 
+/**
+ * @brief 出牌：将hand[index]移入弃牌堆→左移填补空缺→重显剩余手牌
+ * @return 1=成功，0=无效索引或卡牌ID=0
+ */
 int play_card_from_hand(PlayerState *mc, int index, CardLibrary *lib){
     if(index<0||index>=mc->battle_context.hand_count) return 0;
     int card_id=mc->battle_context.hand[index];
@@ -134,7 +135,10 @@ int play_card_from_hand(PlayerState *mc, int index, CardLibrary *lib){
     }
     return 1;
 }
-//怪物办事
+
+/**
+ * @brief 敌人回合：格挡清零(无壁垒)→减Buff→仪式转化为力量→回合计数+1
+ */
 void Turn_Enemy(EnemyState *enemy,PlayerState *mc){
     if(enemy->EnemyBuff[Buff_BARRIER]==0){
         enemy->defend=0;
@@ -146,7 +150,9 @@ void Turn_Enemy(EnemyState *enemy,PlayerState *mc){
     enemy->turn_count++;
 }
 
-//战斗结束 - 卡牌奖励
+/**
+ * @brief 战斗奖励：展示3张随机卡牌，玩家选1张加入牌组
+ */
 void battle_reward(PlayerState *player,CardLibrary *lib){
     if(lib==nullptr||lib->len<=0) return;
     int picks[3];
@@ -174,6 +180,9 @@ void battle_reward(PlayerState *player,CardLibrary *lib){
     }
 }
 
+/**
+ * @brief 战斗胜利：发放15-30金币 + 卡牌三选一奖励
+ */
 void Battle_Close(PlayerState *player,CardLibrary *lib){
     int gold=RandNum_between(15,30);
     player->gold+=gold;
@@ -182,6 +191,9 @@ void Battle_Close(PlayerState *player,CardLibrary *lib){
     battle_reward(player,lib);
 }
 
+/**
+ * @brief 减益Buff层数衰减：易伤/虚弱/脆弱各减1层
+ */
 void Turn_Buff_Changer(std::vector<int>& buff){
     if(buff[DeBuff_VALNERABALE]>0){
         buff[DeBuff_VALNERABALE]--;

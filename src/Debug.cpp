@@ -1,15 +1,9 @@
 #include <stdio.h>
 #include "../include/Debug.hpp"
 
-void print_CardLoaded_array(CardState *card,int len);
-void debug_print_move_library(MoveLibrary *lib);
-void debug_print_enemy_library(EnemyLibrary *lib);
-char * print_enum_to_string_CardEffect(CardEffect effect);
-char * print_enum_to_string_CardTYpe(CardType type);
-const char* get_intent_name(IntnentType intent);
-
-
-
+/**
+ * @brief 以表格形式打印所有已加载卡牌的详细信息（用于启动时调试输出）
+ */
 void print_CardLoaded_array(CardState *card,int len){
     if (card == nullptr || len <= 0) {
         printf("\n[DEBUG] Card library is empty or NULL.\n");
@@ -37,6 +31,9 @@ void print_CardLoaded_array(CardState *card,int len){
     printf("----------------------------");
 }
 
+/**
+ * @brief 打印招式库中所有招式数据（ID/名字/意图）
+ */
 void debug_print_move_library(MoveLibrary *lib) {
     if (lib == nullptr || lib->movedata.empty()) {
         printf("\n[DEBUG] Move library is empty.\n");
@@ -58,7 +55,9 @@ void debug_print_move_library(MoveLibrary *lib) {
     printf("------------------------------------------------------------\n\n");
 }
 
-
+/**
+ * @brief 打印敌人库中所有敌人蓝图数据（ID/名字/血量/AI/招式配置表）
+ */
 void debug_print_enemy_library(EnemyLibrary *lib) {
     if (lib == nullptr || lib->enemystate.empty()) {
         printf("\n[DEBUG] Enemy library is empty.\n");
@@ -83,8 +82,9 @@ void debug_print_enemy_library(EnemyLibrary *lib) {
     printf("\n");
 }
 
-
-
+/**
+ * @brief 将CardEffect枚举值映射为字符串（用于调试输出中的效果名称）
+ */
 char * print_enum_to_string_CardEffect(CardEffect effect){
     switch (effect){
     case 1:
@@ -101,6 +101,10 @@ char * print_enum_to_string_CardEffect(CardEffect effect){
     return "UNKONWN";
     }
 }
+
+/**
+ * @brief 将CardType枚举值映射为字符串
+ */
 char * print_enum_to_string_CardTYpe(CardType type){
     switch (type){
     case 1:
@@ -115,6 +119,10 @@ char * print_enum_to_string_CardTYpe(CardType type){
     return "UNKONWN";
     }
 }
+
+/**
+ * @brief 将IntnentType枚举值映射为简写（用于招式表显示）
+ */
 const char* get_intent_name(IntnentType intent) {
     if (intent == 0) return "-";
     switch(intent) {

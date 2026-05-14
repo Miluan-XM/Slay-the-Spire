@@ -295,44 +295,105 @@ public:
     CardLibrary() : len(0) {}
 };
 
+/**
+ * @brief 玩家初始化：选择职业、设置血量、初始化卡组
+ * @param player 玩家状态指针（输出）
+ */
 void game_init_player(PlayerState *player);
+
+/**
+ * @brief 为铁甲战士初始化初始卡组（5打击+4防御+1痛击）
+ * @param player 玩家状态指针（输出）
+ */
 void Init_Card_Ironclad(PlayerState *player);
+
+/**
+ * @brief 敌人初始化（占位，当前未使用）
+ * @param enemy 敌人状态指针（输出）
+ */
 void game_init_enemy(EnemyState *enemy);
-//查阅函数
-CardState  Card_Searcher(int id,CardLibrary *lib);
-MoveFact  Move_Searcher(int id,MoveLibrary *lib);
-EnemyData Enemy_Searcher(int id,EnemyLibrary *lib);
 
+/**
+ * @brief 按ID查找卡牌
+ * @param id 卡牌ID（从1开始）
+ * @param lib 卡牌库指针
+ * @return 卡牌数据的副本，越界时返回默认构造
+ */
+CardState Card_Searcher(int id, CardLibrary *lib);
 
-void Card_Shuffier(int card[],int len);
-int RandNum_between(int a,int b);
+/**
+ * @brief 按ID查找招式
+ * @param id 招式ID（从501开始）
+ * @param lib 招式库指针
+ * @return 招式数据的副本，越界时返回默认构造
+ */
+MoveFact Move_Searcher(int id, MoveLibrary *lib);
 
+/**
+ * @brief 按ID查找敌人蓝图
+ * @param id 敌人ID（从1开始）
+ * @param lib 敌人库指针
+ * @return 敌人数据的副本，越界时返回默认构造
+ */
+EnemyData Enemy_Searcher(int id, EnemyLibrary *lib);
 
-void swap_value(int *a,int *b);
+/**
+ * @brief Fisher-Yates 洗牌算法
+ * @param card 待洗牌的数组
+ * @param len 数组长度
+ */
+void Card_Shuffier(int card[], int len);
+
+/**
+ * @brief 生成 [a, b] 闭区间的随机整数
+ * @param a 下限
+ * @param b 上限（自动处理 a>b 的情况）
+ * @return 区间内的随机整数
+ */
+int RandNum_between(int a, int b);
+
+/**
+ * @brief 交换两个整数的值
+ * @param a 指针1
+ * @param b 指针2
+ */
+void swap_value(int *a, int *b);
+
+/**
+ * @brief 根据Buff枚举ID获取其简写名称（用于UI显示）
+ * @param index Buff枚举值
+ * @return 简写字符串，如 "STR"、"VUL"、"RIT"；未知返回 "???"
+ */
 const char* UI_Get_Buff_Name(int index);
 
-void Print_Player_Status(PlayerState *p) ;
+/**
+ * @brief 打印玩家状态UI（HP条、格挡、能量、Buff）
+ * @param p 玩家状态指针
+ */
+void Print_Player_Status(PlayerState *p);
 
-
-void Print_Enemy_Status(EnemyState *e) ;
-
+/**
+ * @brief 打印敌人状态UI（名字、意图、HP条、格挡、Buff）
+ * @param e 敌人状态指针
+ */
+void Print_Enemy_Status(EnemyState *e);
 
 // ========== 地图/事件系统 ==========
 
 typedef enum {
-    EVENT_ENEMY,
-    EVENT_TREASURE,
-    EVENT_MYSTERY,
-    EVENT_REST,
-    EVENT_BOSS,
-}EventType;
+    EVENT_ENEMY,    ///< 战斗事件
+    EVENT_TREASURE, ///< 宝箱事件
+    EVENT_MYSTERY,  ///< 未知事件
+    EVENT_REST,     ///< 篝火恢复
+    EVENT_BOSS,     ///< Boss战
+} EventType;
 
 class MapNode {
 public:
-    EventType type;
-    char title[50];
-    char desc[200];
-    int param;
+    EventType type; ///< 事件类型
+    char title[50]; ///< 事件标题
+    char desc[200]; ///< 事件描述
+    int param;      ///< 参数：敌人ID/金币量/恢复百分比
     MapNode() : type(EVENT_ENEMY), param(0) {
         memset(title, 0, 50);
         memset(desc, 0, 200);
@@ -341,23 +402,79 @@ public:
 
 class RunState {
 public:
-    int floor;
-    int max_floors;
-    int step;
-    MapNode path[3];
-    bool game_over;
-    bool victory;
+    int floor;          ///< 当前层数（从1开始）
+    int max_floors;     ///< 总层数
+    int step;           ///< 当前层内进度（0-2）
+    MapNode path[3];    ///< 本层已选的3个事件节点
+    bool game_over;     ///< 游戏结束标志
+    bool victory;       ///< 通关标志
     RunState() : floor(1), max_floors(3), step(0), game_over(false), victory(false) {}
 };
 
+/**
+ * @brief 将指定卡牌加入玩家牌组
+ * @param player 玩家状态指针（输出）
+ * @param card_id 卡牌ID
+ * @param lib 卡牌库指针（用于打印卡名）
+ */
 void add_card_to_deck(PlayerState *player, int card_id, CardLibrary *lib);
+
+/**
+ * @brief 根据层数随机选择敌人ID（难度递增）
+ * @param floor 当前层数
+ * @param lib 敌人库指针
+ * @return 敌人ID（从1开始）
+ */
 int pick_random_enemy_id(int floor, EnemyLibrary *lib);
+
+/**
+ * @brief 为当前层生成3个随机事件节点
+ * @param run 运行状态指针（输出）
+ * @param floor 当前层数
+ * @param enemy_lib 敌人库指针（用于战斗事件）
+ */
 void generate_floor_nodes(RunState *run, int floor, EnemyLibrary *enemy_lib);
+
+/**
+ * @brief 显示当前步的2个可选事件
+ * @param run 运行状态指针
+ * @param enemy_lib 敌人库指针
+ */
 void show_node_choices(RunState *run, EnemyLibrary *enemy_lib);
+
+/**
+ * @brief 让玩家从两个选项中做出选择（1或2）
+ * @return 玩家选择的选项（1或2）
+ */
 int choose_option();
+
+/**
+ * @brief 战斗后奖励：金币 + 选卡
+ * @param player 玩家状态指针（输出）
+ * @param lib 卡牌库指针
+ */
 void battle_reward(PlayerState *player, CardLibrary *lib);
+
+/**
+ * @brief 宝箱事件：获得金币 + 选卡
+ * @param player 玩家状态指针（输出）
+ * @param lib 卡牌库指针
+ * @param gold_amt 获得的金币数量
+ */
 void handle_treasure(PlayerState *player, CardLibrary *lib, int gold_amt);
+
+/**
+ * @brief 未知事件：随机触发回血/金币/受伤/得卡/无事
+ * @param player 玩家状态指针（输出）
+ * @param lib 卡牌库指针
+ */
 void handle_mystery(PlayerState *player, CardLibrary *lib);
+
+/**
+ * @brief 篝火事件：按百分比恢复生命值
+ * @param player 玩家状态指针（输出）
+ * @param pct 恢复百分比（如30=30%）
+ */
 void handle_rest(PlayerState *player, int pct);
 
 #endif // __GAME_HPP__
